@@ -6,6 +6,7 @@ A social network web application where users can share their thoughts, react to 
 - [Description](#description)
 - [Installation Instructions](#installation-instructions)
 - [Usage Intructions](#usage-intructions)
+- [Questions](#questions)
 
 # Description
 
@@ -36,4 +37,16 @@ npm start
 ```
 
 The application will execute in your terminal. Test the various routes using Insomnia.
+
+
+# Questions 
+
+Contact information is provided below:
+* Author: Yashar Sarabi
+* Github: [Yasharjs](https://github.com/yasharjs)
+* Email: yasharjs@gmail.com
+
+# License
+This project is licensed under the [The Unlicensed](https://choosealicense.com/licenses/unlicense/)
+
 
