@@ -1,7 +1,6 @@
 const { Thought, User } = require("../models");
 
 const thoughtController = {
-    
   // get all thoughts
   getAllThoughts(req, res) {
     Thought.find({})
@@ -10,18 +9,18 @@ const thoughtController = {
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => {
         console.log(err);
-        res.status(400).json(err);
+        res.status(500).json(err);
       });
   },
 
   // get one thought by id
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.thoughtId })
+      .select("-__v")
       .populate({
         path: "reactions",
         select: "-__v",
       })
-      .select("-__v")
       .then((dbThoughtData) => {
         // If no user is found, send 404
         if (!dbThoughtData) {
@@ -42,8 +41,8 @@ const thoughtController = {
   addThought({ body }, res) {
     // check if username exists
     User.findOne({ username: body.username })
-      .then((dbFriendData) => {
-        if (!dbFriendData) {
+      .then((dbData) => {
+        if (!dbData) {
           res.status(404).json({
             message: "No user found with this username!",
           });
@@ -62,7 +61,7 @@ const thoughtController = {
             });
           });
       })
-      .catch((err) => res.status(400).json(err));
+      .catch((err) => res.status(500).json(err));
   },
 
   // remove thought
